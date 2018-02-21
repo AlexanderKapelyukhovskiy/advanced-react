@@ -39,7 +39,7 @@ exports[`ArticleList renders correctly 1`] = `
       }
     >
       <a
-        href="{author.website}"
+        href={undefined}
       >
          
       </a>
@@ -89,7 +89,7 @@ exports[`ArticleList renders correctly 1`] = `
       }
     >
       <a
-        href="{author.website}"
+        href={undefined}
       >
          
       </a>
