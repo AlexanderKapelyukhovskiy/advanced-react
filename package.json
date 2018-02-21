@@ -6,10 +6,10 @@
   "author": "Olexandre Kapelyulhovsky",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --exec babel-node ./lib/server.js",
+    "dev": "set NODE_PATH=./lib&& nodemon --exec babel-node ./lib/server.js",
     "webpack": "webpack",
     "webpackd": "webpack -wd",
-    "test": "jest --watch"
+    "test": "set NODE_PATH=./lib&& jest --watch"
   },
   "babel": {
     "presets": [
