@@ -6,21 +6,37 @@
   "author": "Olexandre Kapelyulhovsky",
   "license": "MIT",
   "scripts": {
-    "dev": "set NODE_PATH=./lib&& nodemon --exec babel-node ./lib/server.js",
+    "dev": "cross-env NODE_PATH=./lib nodemon --exec babel-node ./lib/server.js",
+    "dev2": "cross-env NODE_PATH=./lib pm2 start lib/server.js --watch --interpreter babel-node",
     "webpack": "webpack",
     "webpackd": "webpack -wd",
     "test": "set NODE_PATH=./lib&& jest --watch",
-    "verify-tests": "set NODE_PATH=./lib&& jest --coverage"
+    "verify-tests": "set NODE_PATH=./lib&& jest --coverage",
+    "build-webpack": "webpack -p",
+    "build-node": "babel lib -d build --copy-files",
+    "start-prod": "set NODE_ENV=production&& set NODE_PATH=./build&& nodemon --exec node ./build/server.js",
+    "start-prod2": "cross-env NODE_ENV=production NODE_PATH=./build pm2 start build/server.js -i max --name appProd"
   },
   "babel": {
     "presets": [
       "react",
-      "env",
-      "stage-2"
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "transform-class-properties",
+      "transform-object-rest-spread"
     ]
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
+    "cross-env": "^5.1.3",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.18.1",
