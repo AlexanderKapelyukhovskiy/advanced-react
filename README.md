@@ -13,3 +13,10 @@ Sandbox repo for https://app.pluralsight.com/library/courses/reactjs-advanced/ta
 
 ## run server (http://localhost:8000/):
 * yarn dev
+
+## deploy:
+* yarn global add pm2
+* yarn
+* yarn build-webpack
+* yarn build-node
+* yarn start-prod2
